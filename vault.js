@@ -42,11 +42,11 @@ class VaultApp {
           <div class="vault-reference-grid">
             <div class="vault-ref-item">
               <span class="ref-tag">BLUEPRINT DA SALA</span>
-              <img src="assets/images/radar_board.png" alt="Radar Board" class="ref-thumb">
+              <img src="RADAR logo_radar_board.png" alt="Radar Board" class="ref-thumb">
             </div>
             <div class="vault-ref-item">
               <span class="ref-tag">TELA DE SEGURANÇA</span>
-              <img src="assets/images/tela_codigo.png" alt="Tela Código" class="ref-thumb">
+              <img src="Archive confidencial_UI design ideia_tela de inserção do codigo.png" alt="Tela Código" class="ref-thumb">
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ class VaultApp {
       feedback.className = "vault-feedback error";
       feedback.innerHTML = `
         <div class="denied-container">
-          <img src="assets/images/acesso_negado.png" alt="Acesso Negado" class="denied-icon">
+          <img src="Archive confidencial_UI design ideia_acesso negado icon.png" alt="Acesso Negado" class="denied-icon">
           <span>✕ ACESSO NEGADO // CÓDIGO INVÁLIDO</span>
         </div>
       `;
@@ -98,7 +98,7 @@ class VaultApp {
       <div class="vault-unlocked">
         <div class="unlocked-header">
           <div class="unlocked-badge">
-            <img src="assets/images/tela_desbloqueada.png" alt="Desbloqueado" class="unlocked-img-badge">
+            <img src="Archive confidencial_UI design ideia_tela de sistema desbloqueado.png" alt="Desbloqueado" class="unlocked-img-badge">
             <div>
               <h3 style="font-size: 15px; color: #fff;">SISTEMA DESBLOQUEADO // NEURIA ARCHIVE</h3>
               <p style="font-size: 12px; color: #00d2ff;">Ficheiro: <code>ideia.txt</code> | Classificação: SECRETO</p>
