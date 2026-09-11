@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ligar Spotify | Ian Longo</title>
+  <style>
+    :root { --paper:#f8f8f5; --ink:#111; --muted:#6f6f6b; --line:#c8c8c2; --green:#1db954; }
+    * { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; display:grid; place-items:center; padding:24px; background:var(--paper); color:var(--ink); font-family:Arial,sans-serif; }
+    main { width:min(620px,100%); }
+    .back { display:inline-block; margin-bottom:35px; color:var(--muted); font-size:13px; text-decoration:none; }
+    .back:hover { color:var(--ink); }
+    .eyebrow { margin:0 0 12px; color:var(--green); font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { max-width:540px; margin:0; font-size:clamp(40px,7vw,74px); line-height:.94; letter-spacing:-.07em; }
+    .lead { max-width:510px; margin:22px 0 32px; color:var(--muted); font-size:16px; line-height:1.6; }
+    .steps { display:grid; gap:0; margin-bottom:30px; border-top:1px solid var(--line); }
+    .step { display:grid; grid-template-columns:34px 1fr; gap:14px; padding:18px 0; border-bottom:1px solid var(--line); }
+    .number { color:var(--green); font-size:14px; font-weight:700; }.step h2 { margin:0 0 5px; font-size:16px; }.step p { margin:0; color:var(--muted); font-size:13px; line-height:1.5; }.step a { color:var(--ink); font-weight:700; }
+    form { display:grid; gap:10px; }.label { font-size:12px; font-weight:700; }.input-row { display:flex; gap:10px; }.input-row input { min-width:0; flex:1; border:1px solid #aaa; border-radius:8px; padding:13px 14px; background:#fff; color:var(--ink); font:14px monospace; outline:none; }.input-row input:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(29,185,84,.14); }.input-row button { border:0; border-radius:8px; padding:0 20px; background:var(--green); color:#fff; font-weight:700; cursor:pointer; }.input-row button:hover { background:#168c40; }
+    .note { margin:12px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }.note strong { color:var(--ink); }
+    #setup-error { min-height:18px; margin:12px 0 0; color:#b3261e; font-size:12px; }
+    @media (max-width:520px) { .input-row { display:grid; }.input-row button { min-height:44px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">← Voltar ao portfólio</a>
+    <p class="eyebrow">Spotify presence</p>
+    <h1>Mostra o que estás a ouvir agora.</h1>
+    <p class="lead">Liga a tua conta Spotify para o widget mostrar a música real, o artista e o estado de reprodução. A autorização acontece no Spotify.</p>
+
+    <section class="steps" aria-label="Como configurar">
+      <article class="step"><span class="number">01</span><div><h2>Cria uma aplicação Spotify</h2><p>Abre o <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener noreferrer">Spotify for Developers</a>, entra na tua conta e escolhe <strong>Create app</strong>.</p></div></article>
+      <article class="step"><span class="number">02</span><div><h2>Adiciona o endereço de retorno</h2><p>Nas definições da aplicação, adiciona o endereço HTTP onde este site está a correr, por exemplo <strong>http://localhost:5500/index.html</strong>.</p></div></article>
+      <article class="step"><span class="number">03</span><div><h2>Copia apenas o Client ID</h2><p>Cola aqui o Client ID público. Nunca é necessário inserir a tua palavra-passe nem um Client Secret.</p></div></article>
+    </section>
+
+    <form id="spotify-setup-form">
+      <label class="label" for="spotify-client-id">Client ID</label>
+      <div class="input-row"><input id="spotify-client-id" name="clientId" autocomplete="off" placeholder="Ex.: 8f3..." required><button type="submit">Continuar</button></div>
+      <p id="setup-error" role="alert"></p>
+    </form>
+    <p class="note"><strong>Privacidade:</strong> o Client ID fica guardado apenas neste navegador. A sessão é autorizada diretamente pelo Spotify através de OAuth PKCE.</p>
+  </main>
+  <script>
+    const form = document.getElementById('spotify-setup-form');
+    const input = document.getElementById('spotify-client-id');
+    const error = document.getElementById('setup-error');
+    const saved = localStorage.getItem('spotify_client_id');
+    if (saved) input.value = saved;
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const clientId = input.value.trim();
+      if (!/^[a-zA-Z0-9]{20,}$/.test(clientId)) {
+        error.textContent = 'Verifica se colaste um Client ID válido.';
+        return;
+      }
+      localStorage.setItem('spotify_client_id', clientId);
+      window.location.href = 'index.html?spotify-connect=1';
+    });
+  </script>
+</body>
+</html>

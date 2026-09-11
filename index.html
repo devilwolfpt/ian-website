@@ -76,11 +76,15 @@
           <span class="sun-icon" aria-hidden="true">☀</span>
           <div class="weather-copy"><strong>24°C</strong><small>São Paulo, BR</small></div>
         </button>
-        <button class="utility-panel utility-panel-spotify" type="button" data-utility="spotify" aria-label="Spotify">
+        <section class="utility-panel utility-panel-spotify" data-utility="spotify" aria-label="Spotify">
           <span class="spotify-mark" aria-hidden="true"><i></i></span>
-          <span class="music-copy"><b>Spotify</b><span>BTS <em>- Run</em></span></span>
-          <span class="music-controls" aria-hidden="true">◀ Ⅱ ▶</span>
-        </button>
+          <span class="music-copy"><b>Spotify</b><span id="spotify-track">Spotify desligado</span><button id="spotify-login" class="spotify-login" type="button">Ligar conta</button><small id="spotify-progress">Liga para mostrar o que estás a ouvir</small></span>
+          <span class="music-controls">
+            <button class="music-control" data-track-action="previous" type="button" aria-label="Faixa anterior">◀</button>
+            <button class="music-control music-play" data-track-action="toggle" type="button" aria-label="Pausar">Ⅱ</button>
+            <button class="music-control" data-track-action="next" type="button" aria-label="Próxima faixa">▶</button>
+          </span>
+        </section>
         <a class="utility-panel utility-panel-ad" data-utility="advertisement" href="https://codify-welcome.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Conhecer o Codify">
           <span><strong>CODIFY</strong><small>O espaço para escrever o próximo.</small></span><b>Conhecer ↗</b>
         </a>

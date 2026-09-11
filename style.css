@@ -37,13 +37,15 @@
 
 /* Keep status, projects and rotating utilities on one right-hand column. */
 @media(min-width:761px) {
-	.header-tools { right: clamp(36px, 5.5vw, 112px); }
-	.project-widget, .utility-slot { right: clamp(36px, 5.5vw, 112px); }
-}
-
+	.intro-grid { width: calc(100% - 350px); grid-template-columns: minmax(0, 1fr) 190px minmax(0, 1fr); gap: 32px; }
+	.intro-copy h1 { max-width: 280px; font-size: clamp(58px, 5vw, 76px); transform: none; }
+	.time-mark { justify-self: center; width: 190px; max-width: 190px; margin: 0; font-size: clamp(100px, 8vw, 150px); transform: none; text-align: center; }
+	.coder-copy { width: 220px; padding-left: 0; transform: none; }
 /* Two-card weather carousel: the front card is larger and the rear card recedes. */
 .utility-slot { width: 290px; height: 92px; right: clamp(36px, 3.5vw, 72px); bottom: 24px; }
-.weather-underlay, .utility-panel { display: none; }
+	.portrait-stage { position: absolute; top: 250px; bottom: 0; left: clamp(36px, 5.8vw, 118px); width: calc(100% - 350px - clamp(36px, 5.8vw, 118px)); height: auto; min-height: 0; max-width: none; margin: 0; overflow: visible; }
+	.portrait-image { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+	.portrait-image img { width: auto; height: 120%; max-width: 100%; object-fit: contain; object-position: center bottom; }
 .weather-card { position: absolute; display: flex; align-items: center; gap: 14px; border: 2px solid var(--line); background: var(--lavender); color: var(--ink); text-align: left; cursor: pointer; transform-origin: bottom right; transition: transform .55s cubic-bezier(.22, .8, .28, 1), opacity .55s ease, box-shadow .55s ease; }
 .weather-card .sun-icon { flex: 0 0 auto; color: #ffc400; line-height: .8; }
 .weather-card strong { font-size: 20px; font-weight: 500; white-space: nowrap; }
@@ -84,20 +86,65 @@
 }
 
 @media(min-width:761px) and (max-width:1100px) {
-	.intro-grid { grid-template-columns: minmax(205px, 1fr) 112px minmax(170px, .9fr); gap: 26px; }
-	.intro-copy h1 { font-size: 50px; transform: scaleX(.76); }
-	.time-mark { font-size: 78px; transform: rotate(-2deg) scaleX(.78); }
-	.coder-copy { padding-left: 16px; }
-	.coder-copy h2 { font-size: 40px; }
+	.intro-grid { grid-template-columns: 180px 96px 180px; justify-content: space-between; gap: 0; }
+	.intro-copy h1 { max-width: 180px; font-size: 42px; transform: none; white-space: nowrap; }
+	.time-mark { width: 96px; margin: 0; font-size: 68px; transform: scaleX(.62); transform-origin: center center; text-align: center; }
+	.coder-copy { padding-left: 16px; margin-left: 28px; }
+	.coder-copy h2 { font-size: 34px; }
+	.portrait-stage { position: absolute; top: 250px; bottom: 0; left: 38px; width: calc(100% - 330px - 38px); height: auto; min-height: 0; margin: 0; overflow: visible; }
+	.portrait-image { overflow: hidden; }
+	.portrait-image img { width: auto; height: 120%; max-width: 100%; object-fit: contain; object-position: center bottom; }
 }
 
 @media(min-width:1101px) {
-	.intro-grid { width: calc(100% - 350px); grid-template-columns: minmax(250px, 1fr) 170px minmax(220px, 1fr); gap: 32px; }
-	.intro-copy h1 { max-width: 250px; font-size: clamp(58px, 5vw, 76px); transform: scaleX(.72); }
-	.time-mark { justify-self: center; max-width: 170px; font-size: clamp(100px, 8vw, 150px); transform: rotate(-2deg) scaleX(.54); }
-	.coder-copy { width: 220px; padding-left: 0; transform: translateX(88px); }
+	.intro-grid { width: calc(100% - 350px); grid-template-columns: 260px 190px 260px; justify-content: space-between; gap: 0; }
+	.intro-copy h1 { max-width: 260px; font-size: clamp(58px, 5vw, 76px); transform: none; }
+	.time-mark { justify-self: center; max-width: 190px; font-size: clamp(100px, 8vw, 150px); transform: rotate(-2deg) scaleX(.54); }
+	.coder-copy { width: 260px; padding-left: 0; transform: none; }
 	.coder-copy h2 { font-size: clamp(48px, 4.2vw, 66px); }
 	.coder-copy .bio { width: 210px; }
+	.portrait-stage { position: absolute; top: 250px; bottom: 0; left: clamp(36px, 5.8vw, 118px); width: calc(100% - 350px - clamp(36px, 5.8vw, 118px)); height: auto; min-height: 0; max-width: none; margin: 0; }
+	.portrait-image { width: 100%; height: 100%; }
+	.portrait-image img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 }
 @media(max-width:1100px) { .utility-slot, .utility-slot .utility-panel { width: 250px; } .utility-slot { height: 96px; } .utility-slot .utility-panel { height: 96px; } }
 @media(max-width:760px) { .utility-slot { width: min(280px,100%); height: 96px; right: auto; } .utility-slot .utility-panel { width: 100%; height: 96px; } }
+
+@media(min-width:761px) {
+	.portrait-stage { overflow: visible; }
+	.portrait-image { overflow: visible; }
+	.portrait-image img { width: 100%; height: 100%; max-width: 100%; object-fit: contain; object-position: center bottom; }
+}
+}
+
+/* Softer status card */
+.header-tools .profile-widget { border: 1px solid #aaa; border-radius: 14px; background: #e2e2e0; box-shadow: 0 7px 18px rgba(0,0,0,.08); overflow: hidden; }
+.header-tools .profile-top { min-height: 92px; padding: 10px 16px; border-radius: 14px; }
+.header-tools .avatar { width: 62px; height: 62px; flex-basis: 62px; border-width: 3px; }
+.header-tools .avatar img { width: 38px; height: 38px; }
+.header-tools .avatar::after { width: 14px; height: 14px; right: -6px; border-width: 2px; }
+.header-tools .profile-name { gap: 5px; }
+.header-tools .profile-name strong { font-size: 21px; }
+.header-tools .profile-name small { font-size: 15px; }
+.header-tools .profile-chevron { font-size: 30px; }
+
+/* Final refinement for the compact status widget. */
+.header-tools .profile-widget { width: 250px; border: 1px solid #b8b8b5; border-radius: 10px; background: #e5e5e3; box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+.header-tools .profile-top { min-height: 78px; gap: 12px; padding: 8px 12px; border-radius: 10px; }
+.header-tools .avatar { width: 50px; height: 50px; flex-basis: 50px; border-width: 2px; background: #c4c8d8; }
+.header-tools .avatar img { width: 31px; height: 31px; }
+.header-tools .avatar::after { width: 11px; height: 11px; right: -5px; bottom: 0; }
+.header-tools .profile-name { gap: 3px; }
+.header-tools .profile-name strong { font-size: 17px; font-weight: 600; letter-spacing: -.3px; }
+.header-tools .profile-name small { font-size: 12px; font-weight: 500; }
+.header-tools .profile-chevron { font-size: 22px; }
+
+.utility-panel-spotify { cursor: default; }
+.utility-panel-spotify .music-copy { min-width: 0; }
+.utility-panel-spotify .music-copy small { display: block; margin-top: 3px; color: #777; font-size: 10px; font-weight: 400; }
+.music-controls { display: flex; align-items: center; gap: 7px; }
+.music-control { display: grid; place-items: center; width: 25px; height: 25px; color: #999; font-size: 12px; }
+.music-control:hover { color: #222; }
+.music-play { color: #777; font-size: 14px; }
+.spotify-login { display: block; margin-top: 4px; color: #168b43; font-size: 11px; font-weight: 600; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+.spotify-login:hover { color: #0c5d2d; }
