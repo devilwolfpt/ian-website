@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
       panel.classList.toggle('is-active', distance === 0);
       panel.classList.toggle('is-next', distance === 1);
       panel.classList.toggle('is-last', distance === 2);
+      panel.classList.toggle('is-fourth', distance === 3);
+      panel.classList.toggle('is-fifth', distance === 4);
+      panel.classList.toggle('is-sixth', distance === 5);
       panel.setAttribute('aria-hidden', String(distance !== 0));
     });
   }

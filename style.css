@@ -110,6 +110,15 @@
 @media(max-width:1100px) { .utility-slot, .utility-slot .utility-panel { width: 250px; } .utility-slot { height: 96px; } .utility-slot .utility-panel { height: 96px; } }
 @media(max-width:760px) { .utility-slot { width: min(280px,100%); height: 96px; right: auto; } .utility-slot .utility-panel { width: 100%; height: 96px; } }
 
+/* Extra utility states in the same five-item cycle. */
+.utility-slot .utility-panel.is-fourth { z-index: 0; opacity: .46; visibility: visible; transform: translate(0, -98px) scale(.64); pointer-events: none; }
+.utility-slot .utility-panel.is-fifth { z-index: 0; opacity: .3; visibility: visible; transform: translate(0, -117px) scale(.55); pointer-events: none; }
+.utility-panel-availability, .utility-panel-location { gap: 10px; padding: 14px 18px; color: var(--ink); }
+.utility-panel-availability { background: #edf8ef; }.utility-panel-location { background: #eceae5; }
+.utility-symbol { display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; background: rgba(255,255,255,.7); color: #3b8f58; font-size: 19px; }
+.utility-panel-location .utility-symbol { color: #777; }.utility-panel-availability > span:nth-child(2), .utility-panel-location > span:nth-child(2) { display: grid; gap: 3px; }.utility-panel-availability strong, .utility-panel-location strong { font-size: 13px; font-weight: 600; }.utility-panel-availability small, .utility-panel-location small { color: #777; font: 10px var(--font-mono); }.availability-dot { width: 8px; height: 8px; margin-left: auto; border-radius: 50%; background: #36ad62; }
+@media(max-width:760px) { .utility-slot .utility-panel.is-fourth { transform: translate(0,-78px) scale(.64); }.utility-slot .utility-panel.is-fifth { transform: translate(0,-94px) scale(.55); } }
+
 @media(min-width:761px) {
 	.portrait-stage { overflow: visible; }
 	.portrait-image { overflow: visible; }
@@ -146,5 +155,67 @@
 .music-control { display: grid; place-items: center; width: 25px; height: 25px; color: #999; font-size: 12px; }
 .music-control:hover { color: #222; }
 .music-play { color: #777; font-size: 14px; }
+
+/* Softer widget language */
+.project-widget { border: 1px solid rgba(100,100,96,.6); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(40,40,35,.08); }
+.project-widget { z-index: 10; }
+.project-widget a { border-bottom: 1px solid rgba(100,100,96,.45); }
+.project-widget-title { padding: 12px 14px 8px; background: rgba(255,255,255,.55); font-size: 13px; font-weight: 600; letter-spacing: -.2px; }
+.project-widget a { min-height: 68px; }
+.project-widget .neuria-mark { width: 48px; height: 48px; display: grid; place-items: center; flex: 0 0 48px; border-radius: 14px; background: #d8ccff; color: #5f48b7; font-size: 25px; font-weight: 700; }
+.project-widget-more { justify-content: space-between; min-height: 42px !important; padding: 10px 14px !important; background: rgba(255,255,255,.45); font-size: 11px; font-weight: 600; }
+.project-widget-more span { font-size: 16px; }
+
+/* Compact project rail so it never covers the rotating widgets. */
+.project-widget { width: 250px; border-radius: 14px; }
+.project-widget-title { padding: 8px 12px 5px; font-size: 11px; }
+.project-widget a { min-height: 52px; height: 52px; gap: 8px; padding: 4px 9px; }
+.project-widget img { width: 48px; height: 38px; }
+.project-widget .neuria-mark { width: 36px; height: 36px; flex-basis: 36px; border-radius: 10px; font-size: 18px; }
+.project-widget span { gap: 3px; }.project-widget b { font-size: 15px; letter-spacing: -.5px; }.project-widget small { font-size: 9px; letter-spacing: 0; }
+.project-widget-more { min-height: 34px !important; height: 34px !important; padding: 7px 10px !important; font-size: 9px; }.project-widget-more span { font-size: 13px; }
+
+@media(min-width:761px) { .project-widget { top: 36%; } }
+
+/* Compact the complete right rail. */
+@media(min-width:761px) {
+	.header-tools { right: calc(clamp(36px, 5.5vw, 112px) + 12px); }
+	.header-tools .profile-widget { width: 218px; border-radius: 11px; }
+	.header-tools .profile-top { min-height: 66px; gap: 9px; padding: 7px 10px; }
+	.header-tools .avatar { width: 42px; height: 42px; flex-basis: 42px; }
+	.header-tools .avatar img { width: 26px; height: 26px; }
+	.header-tools .avatar::after { width: 9px; height: 9px; right: -4px; }
+	.header-tools .profile-name strong { font-size: 15px; }
+	.header-tools .profile-name small { font-size: 11px; }
+	.header-tools .profile-chevron { font-size: 18px; }
+	.project-widget { width: 242px; border-radius: 14px; }
+	.project-widget-title { padding: 8px 11px 5px; font-size: 11px; }
+	.project-widget a { height: 50px; min-height: 50px; padding: 4px 8px; gap: 7px; }
+	.project-widget img { width: 44px; height: 34px; }
+	.project-widget .neuria-mark { width: 34px; height: 34px; flex-basis: 34px; border-radius: 9px; font-size: 17px; }
+	.project-widget b { font-size: 14px; }.project-widget small { font-size: 9px; }
+	.project-widget-more { height: 32px !important; min-height: 32px !important; padding: 6px 9px !important; font-size: 9px; }
+	.utility-slot { width: 240px; height: 88px; }
+	.utility-slot .utility-panel { width: 240px; height: 88px; border-radius: 14px; }
+	.utility-panel-weather { padding: 10px 14px; }.utility-panel-weather .sun-icon { font-size: 46px; }.utility-panel-weather strong { font-size: 16px; }
+	.utility-panel-spotify { gap: 9px; padding: 10px 12px; }.utility-panel-spotify .spotify-mark { width: 45px; height: 45px; flex-basis: 45px; }.utility-panel-spotify b { font-size: 16px; }.utility-panel-spotify .music-copy span { font-size: 12px; }.utility-panel-spotify .music-copy small { font-size: 8px; }.music-controls { gap: 3px; font-size: 12px; }
+	.utility-panel-ad { gap: 8px; padding: 10px 12px; }.utility-panel-ad strong { font-size: 16px; }.utility-panel-ad small { font-size: 9px; }.utility-panel-ad > b { font-size: 9px; }
+	.utility-panel-availability, .utility-panel-location, .utility-panel-work { gap: 7px; padding: 10px 12px; }.utility-symbol { width: 27px; height: 27px; flex-basis: 27px; font-size: 14px; }.utility-panel-availability strong, .utility-panel-location strong, .utility-panel-work strong { font-size: 10px; }.utility-panel-availability small, .utility-panel-location small, .utility-panel-work small { font-size: 8px; }
+}
+.utility-slot .utility-panel { border: 1px solid rgba(100,100,96,.6); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(40,40,35,.08); }
+.utility-slot .utility-panel.is-next, .utility-slot .utility-panel.is-last, .utility-slot .utility-panel.is-fourth, .utility-slot .utility-panel.is-fifth { border-radius: 14px; box-shadow: 0 4px 12px rgba(40,40,35,.05); }
+.utility-panel-weather, .utility-panel-spotify, .utility-panel-ad, .utility-panel-availability, .utility-panel-location { border-radius: 16px; }
+
+/* Keep the rotating stack calm instead of showing a hard pile of rectangles. */
+.project-widget { border-radius: 20px; }
+.utility-slot .utility-panel { border-radius: 20px; }
+.utility-slot .utility-panel.is-next { opacity: .52; transform: translate(0, -34px) scale(.86); }
+.utility-slot .utility-panel.is-last { opacity: .26; transform: translate(0, -63px) scale(.73); }
+.utility-slot .utility-panel.is-fourth { opacity: .14; transform: translate(0, -88px) scale(.64); }
+.utility-slot .utility-panel.is-fifth { opacity: .08; transform: translate(0, -108px) scale(.55); }
+.utility-slot .utility-panel.is-sixth { z-index: 0; opacity: .04; visibility: visible; transform: translate(0, -124px) scale(.48); pointer-events: none; }
+.utility-panel-work { gap: 10px; padding: 14px 18px; background: #e9f0f7; color: var(--ink); }
+.utility-panel-work .utility-symbol { color: #42627d; }
+.utility-panel-work > span:nth-child(2) { display: grid; gap: 3px; }.utility-panel-work strong { font-size: 13px; font-weight: 600; }.utility-panel-work small { color: #777; font: 10px var(--font-mono); }
 .spotify-login { display: block; margin-top: 4px; color: #168b43; font-size: 11px; font-weight: 600; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
 .spotify-login:hover { color: #0c5d2d; }
